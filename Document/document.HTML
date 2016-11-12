@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document</title>
+	<script type="text/javascript">
+		var findJs = function () {
+			//find dom JavaScript
+			return document.getElementById('p1').innerText;
+		}
+
+		var div3Arr = function () {
+			// find [Python,Ruby,Swift]
+			var arr = [];
+			var elements = document.getElementsByClassName('div3')[0].children;
+			for(var i = 0 ; i < elements.length; i ++){
+				arr.push(elements[i].innerText);
+				console.log(elements[i].innerText);
+			}
+			return arr;
+		}
+
+		var findHaskell = function () {
+			// find haskell
+			var div = document.getElementsByClassName('div4')[0];
+			return div.lastElementChild.innerText;
+		}
+
+	</script>
+</head>
+<body>
+
+<!-- html -->
+<div id = "div1">
+	<div class = "div2">
+		<p id = "p1">JavaScript</p>
+		<p> Java</p>
+	</div>
+
+	<div class = "div3">
+		<p>Python</p>
+		<p>Ruby</p>
+		<p>Swift</p>
+	</div>
+
+	<div class = "div4">
+		<p>Scheme</p>
+		<p>Haskell</p>
+	</div>
+	
+</div>
+
+<Button onClick='alert(findJs())'>Find JavaScript</Button><br/>
+<Button onClick='alert(div3Arr())'>find [Python,Ruby,Swift]</Button><br/>
+<Button onClick='alert(findHaskell())'>find haskell</Button><br/>
+</body>
+</html>

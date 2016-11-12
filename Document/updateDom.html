@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>更新DOM</title>
+	<script type="text/javascript">
+		var js = function () {
+			// body...
+			return document.getElementById('js');
+		}
+
+		function modifyText(){
+			document.getElementById('js').innerText = 'JavaScript';
+		}
+
+		function modifyCss(){
+			var js = document.getElementById('js');
+			js.style.color = '#ff0000';
+			js.style.fontWeight = 'bold';
+		}
+	</script>
+</head>
+<body>
+
+<!-- html结构 -->
+<div id="div">
+	<p id="js">javascript</p>
+	<p>Java</p>
+</div>
+
+<Button onClick="alert(js().innerHTML)">获取javascript</Button>
+
+<Button onClick="modifyText()">修改文本为JavaScript</Button>
+
+<Button onClick="modifyCss()">修改文本为Css</Button>
+</body>
+</html>
