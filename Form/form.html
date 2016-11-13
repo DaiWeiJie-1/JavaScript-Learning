@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form</title>
+	<script type="text/javascript">
+	function checkForm(){
+		var userName = document.getElementById('username').value;
+		var password = document.getElementById('input-password').value;
+		document.getElementById('md5-password').value = password;
+		return true;
+	}
+	</script>
+</head>
+<body>
+<div>
+	<form id="form" onsubmit="return checkForm()">
+		<input type="text" id="username" name="username">
+		<input type="password" id="input-password">
+		<input type="hidden" id="md5-password" name="password">
+		<button type="submit">Submit</button>
+	</form>
+</div>
+</body>
+</html>
