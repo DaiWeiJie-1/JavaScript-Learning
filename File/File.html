@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File</title>
+	<style type="text/css">
+		#pic_preview{
+			height: 300px;
+			width: 400px;
+			border: 1px solid black;
+		}
+	</style>
+
+	<script type="text/javascript">
+		//javascript的代码需要在页面加载后才可以执行,window.onload就是页面加载后的回调
+		window.onload = function () {
+			// body...
+			var fileInput = document.getElementsByName('file_selector')[0];
+			var fileInfo = document.getElementById('file_info');
+			var picPreview = document.getElementById('pic_preview');
+
+			//监听input的change事件
+			fileInput.addEventListener('change',function(){
+				//清楚背景图片
+				picPreview.style.backgroundImage='';
+				if(!fileInput.value){
+					fileInfo.innerHTML = '没有选择文件';
+					return;
+				}
+
+				//获取file引用
+				var file = fileInput.files[0];
+				fileInfo.innerHTML = '文件：' + file.name + '<br>' + 
+								'大小:' + file.size + '<br>' + 
+								'修改:' + file.lastModifiedDate;
+
+				if(file.type !== 'image/jpeg' && file.type !== 'iamge/png' && file.type !== 'image/gif'){
+					alert('不是有效的图片文件');
+					return;
+				}
+
+				//读取文件
+				var reader = new FileReader();
+				//文件读取完成回调
+				reader.onload = function(file){
+					var data = file.target.result;
+					console.log("file :" + data);
+					//通过url设置背景
+					picPreview.style.backgroundImage = 'url(' + data + ')';
+				};
+
+				//以dataurl形式读取文件
+				reader.readAsDataURL(file);
+			});
+		}
+	</script>
+</head>
+<body>
+<div id="pic_preview">
+	
+</div>
+<p id="file_info">
+	
+</p>
+<input type="file" name="file_selector">
+</body>
+</html>
