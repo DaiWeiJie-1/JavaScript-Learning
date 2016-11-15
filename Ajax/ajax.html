@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX</title>
+	<script type="text/javascript">
+
+	//jsonp,script可以跨域访问,所以可以将内容保存成js方法回调来传递数据
+	function Callback(data){
+		console.log(data);
+		var obj = JSON.parse(data);
+		var p = document.getElementById('content');
+		p.innerText = obj.body.text;
+		p.style.color = obj.body.color;
+
+	}
+
+
+	//由于浏览器安全策略,只能访问同源数据,所以并不能直接读取本地文件
+		// window.onload = function () {
+
+		// 	var request;
+		// 	//低版本不支持XMLHttpRequest
+		// 	if(window.XMLHttpRequest){
+		// 		request = new XMLHttpRequest();
+		// 	}else{
+		// 		request = new ActiveXObject('Microsoft.XMLHTTP');
+		// 	}
+
+		// 	request.onreadystatechange = function(){
+		// 		if(request.readyState === 4){
+		// 			//完成请求
+		// 			if(request.status === 200){
+		// 				//成功,通过responseText拿到文本
+		// 				console.log(request.responseText);
+		// 				return;
+		// 			}else{
+		// 				//失败
+		// 				return;
+		// 			}
+		// 		}else{
+		// 			//仍在请求
+		// 		}
+		// 	}
+
+		// 	request.open('GET','/json.txt');
+		// 	request.send();
+		// }
+
+		//等节目加载完成后,动态添加jsonp
+		window.onload = function(){
+			var script = document.createElement('script');
+			script.type = "text/javascript";
+			script.src = "json.txt";
+			var head = document.getElementsByTagName('head')[0];
+			head.appendChild(script);
+
+		}
+	</script>
+
+
+	<!--  如果这种设置方法,则再其他元素还未加载之前已经调用了方法  <script type="text/javascript" src="json.txt"></script> -->
+</head>
+<body>
+ <p id="content"></p>
+</body>
+</html>
