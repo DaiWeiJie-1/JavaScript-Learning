@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>AJAX</title>
-	<script type="text/javascript">
+	<script type="text/javascript" >
 
 	//jsonp,script可以跨域访问,所以可以将内容保存成js方法回调来传递数据
 	function Callback(data){
@@ -51,6 +51,8 @@
 			var script = document.createElement('script');
 			script.type = "text/javascript";
 			script.src = "json.txt";
+			//script异步加载,只适用于src
+			script.async = "async";
 			var head = document.getElementsByTagName('head')[0];
 			head.appendChild(script);
 
