@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selector Demo</title>
+	//引入jquery
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		var selectElements = null;
+
+		//高亮
+		function highlight() {
+			if(selectElements != null){
+				selectElements.css('background-color','#ffd351');	
+			}
+			selectElements.css('background-color','#ffd351');
+		}
+
+		//取消高亮
+		function unHighlight(){
+			if(selectElements != null){
+				selectElements.css('background-color',"");	
+			}
+			
+		}
+
+		//1.选择javascript
+		function selectJavaScript(){
+			unHighlight();
+			selectElements = $('#p1.color-red');
+			highlight();
+		}
+
+		//2.选择Erlang
+		function selectErlang(){
+			unHighlight();
+			selectElements = $('.color-red.color-green');
+			highlight();
+		}
+
+		//3.选择javaScript和erlang
+		function selectJsAndErlang(){
+			unHighlight();
+			selectElements = $('.color-red');
+			highlight();
+		}
+
+		//选择所有的编程语言
+		function selectAllLanguage(){
+			unHighlight();
+			selectElements = $('p[class^=color-]');
+			highlight();
+		}
+
+		//选择名字input
+		function selectNameInput(){
+			unHighlight();
+			selectElements = $('input[name=name]');
+			highlight();
+		}
+
+		//选择名字和邮箱的input
+		function selectNameAndMailInput(){
+			unHighlight();
+			selectElements = $('input[name=name],input[name=email]');
+			highlight();
+		}
+
+	</script>
+
+</head>
+<body>
+
+<p>
+使用jQuery选择器分别选出指定元素：<br/>
+
+仅选择JavaScript<br/>
+
+仅选择Erlang<br/>
+
+选择JavaScript和Erlang<br/>
+
+选择所有编程语言<br/>
+
+选择名字input<br/>
+
+选择邮件和名字input<br/>
+</p>
+
+<div id="test-jquery">
+	<p id="p1" class="color-red">JavaScript</p>
+	<p id="p2" class="color-green">Haskell</p>
+	<p class="color-red color-green">Erlang</p>
+	<p name="name" class="color-black">Python</p>
+	<form class="test-form" target="_blank" action="#0" onsubmit="return true;">
+		<legend>注册新用户</legend>
+		<fieldset>
+			<p><label>名字:<input name="name"></label></p>
+			<p><label>邮件:<input name="email"></label></p>
+			<p><label>口令:<input name="password" type="password"></label></p>
+			<p><button type="submit">注册</button></p>
+			<!-- <p><button onClick="">重置</button></p> -->
+
+		</fieldset>
+	</form>
+	<p><button onclick="selectJavaScript()">高亮javascript</button></p>
+	<p><button onclick="selectErlang()">高亮Erlang</button></p>
+	<p><button onclick="selectJsAndErlang()">高亮javascript和Erlang</button></p>
+	<p><button onclick="selectAllLanguage()">高亮所有语言</button></p>
+	<p><button onclick="selectNameInput()">高亮名字input</button></p>
+	<p><button onclick="selectNameAndMailInput()">高亮Name和mail</button></p>
+
+</div>
+</body>
+</html>
