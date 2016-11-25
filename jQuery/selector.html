@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>selector</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+		//通过id查找
+		var id = $('#id');
+
+		//通过tag查找
+		var tag = $('tag');
+
+		//通过class查找
+		var class = $('.class');
+
+		//多个class
+		var multiclass = $('.class1.class2');
+
+		//按照属性查找
+		var name = $('[name=xxx]');
+
+		//前缀属性查找
+		var startP = $('[name^=xxx]');
+
+		//后缀属性查找
+		var endP = $('[name$=xxx]');
+
+		//组合查找
+		//查找tag和属性结合
+		var value = $('input[name=xxxx]');
+
+		//多项选择器
+
+		$('p,div');
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
