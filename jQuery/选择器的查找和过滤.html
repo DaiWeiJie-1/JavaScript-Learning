@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选择器的查找和过滤</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		var person={};
+
+		function fetchValue() {
+			// 父元素下寻找tag是input和select的元素,并且过滤掉radio下未check的选项
+			var inputElements = $('form#test-form').find('input,select').filter(function (){
+				if(this.type === "radio" && this.name === "gender"){
+					if(this.checked === true){
+						return true;
+					}else{
+						return false;
+					}
+				
+				}
+				return true;
+			});
+		    console.log(inputElements.length);
+		    var len = inputElements.length;
+		    for(var i = 0; i < len;i++){
+		    	person[inputElements[i].name] = inputElements[i].value;
+		    	
+		    }
+		
+			alert(JSON.stringify(person,null,'	'));
+			return false;
+		}
+	</script>
+</head>
+<body>
+<form id="test-form" action="#0" onsubmit="return fetchValue()">
+	<p><label>Name:<input name="name"></label></p>
+	<p><label>Email:<input name="email"></label></p>
+	<p><label>Password:<input type="password" name="password"></label></p>
+	<p>Gender:
+		<label><input type="radio" name="gender" value="m" checked>Male</label>
+		<label><input type="radio" name="gender" value="f">Female</label>
+	</p>
+	<p><label>City:<select name="city">
+		<option value="BJ" selected>Beijing</option>
+		<option value="SH">Shanghai</option>
+		<option value="CD">Chengdu</option>
+	</select></label>
+	</p>
+
+	<p><button type="submit">Submit</button></p>
+
+</form>
+</body>
+</html>
