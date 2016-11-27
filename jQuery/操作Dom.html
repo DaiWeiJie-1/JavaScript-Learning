@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery操作Dom</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			console.log("js text:"+ $('ul#test-ul li.js').text());
+			console.log("book html:" + $('ul#test-ul li[name=book]').html());
+
+			$('ul#test-ul li.js').html('<span style="color:red">JavaScript</span>');
+			$('ul#test-ul li[name=book]').text('Java,JavaScript');
+		}
+	</script>
+
+</head>
+<body>
+<ul id="test-ul">
+	<li class="js">JavaScript</li>
+	<li name="book">Java &amp; JavaScript</li>
+</ul>
+</body>
+</html>
