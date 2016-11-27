@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Descendant Selector层级选择器</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+
+		var highLightElements = null;
+
+		function highLight(){
+			this.highLightElements.css('background-color',"#ffd351");
+		}
+
+		function resetHightLight(){
+			if(this.highLightElements === null){
+				return;
+			}
+			this.highLightElements.css('background-color','');
+		}
+
+		//选择所有语言
+		function selectAllLang(){
+			resetHightLight();
+			this.highLightElements = $('li');
+			highLight();
+		}
+
+		//选择所有动态语言
+		function selectAllDyLang(){
+			resetHightLight();
+			this.highLightElements = $('ul li');
+			highLight();
+		}
+
+		//高亮所有静态语言
+		function selectAllStaticLang(){
+			resetHightLight();
+			this.highLightElements = $('ol li');
+			highLight();
+		}
+
+		//选择javascript
+		function selectJavaScript(){
+			resetHightLight();
+			this.highLightElements = $('ul li.lang-javascript');
+			highLight();
+		}
+
+		//选择lua
+		function selectLua(){
+			resetHightLight();
+			this.highLightElements = $('ul li:nth-child(3)');
+			highLight();
+		}
+
+		//选择c
+		function selectC(){
+			resetHightLight();
+			this.highLightElements = $('ol li:nth-child(3)')
+			highLight();
+		}
+	</script>
+</head>
+<body>
+<div class="test-selector">
+	<ul class="test-lang">
+		<li class="lang-javascript">JavaScript</li>
+		<li class="lang-python">Python</li>
+		<li class="lang-lua">Lua</li>
+	</ul>
+
+	<ol class="test-lang">
+		<li class="lang-swift">Swift</li>
+		<li class="lang-java">java</li>
+		<li class="lang-c">C</li>
+		
+	</ol>
+	
+	<p><button onClick="selectAllLang()">高亮所有语言</button></p>
+	<p><button onClick="selectAllDyLang()">高亮所有动态语言</button></p>
+	<p><button onClick="selectAllStaticLang()">高亮所有静态语言</button></p>
+	<p><button onClick="selectJavaScript()">高亮JavaScript</button></p>
+	<p><button onClick="selectLua()">高亮Lua</button></p>
+	<p><button onClick="selectC()">高亮C</button></p>
+</div>
+</body>
+</html>
