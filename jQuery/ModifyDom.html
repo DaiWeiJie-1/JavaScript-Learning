@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ModifyDom</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+
+			//先添加元素
+			var ul = $('div#test-div>ul');
+			ul.append('<li><span>Pascal</span></li>');
+			ul.append('<li><span>Lua</span></li>');
+			ul.append('<li><span>Ruby</span></li>');
+
+			console.log($('div#test-div>ul>li').get());
+
+			var elements = ul.find('li').get();
+			//排序
+			elements.sort(function(x,y){
+				if(x.innerText > y.innerText){
+					return 1;
+				}else{
+					return -1;
+				}
+			});
+			ul.find('li').remove();
+			ul.append(elements);
+
+
+
+		}
+	</script>
+</head>
+<body>
+<div id="test-div">
+	<ul>
+		<li><span>JavaScript</span></li>
+		<li><span>Python</span></li>
+		<li><span>Swift</span></li>
+	</ul>
+</div>
+</body>
+</html>
