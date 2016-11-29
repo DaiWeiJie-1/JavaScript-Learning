@@ -13,11 +13,18 @@
 				$('p#test-location').show();
 				$('p#test-status').show().text('mouseenter');
 			});
+
 			$('div#test-div').mouseleave(function(e){
 				$('p#test-status').hide();
 				$('p#test-location').hide();
 			});
 
+			//10秒钟解除绑定
+			setTimeout(function(){
+				$('div#test-div').off('mousemove');
+				$('div#test-div').off('mouseenter');
+				$('div#test-div').off('mouseleave');
+			},5000);
 
 		});
 	</script>
@@ -32,7 +39,7 @@
 <body>
 <p id="test-status"></p>
 <p id="test-location"></p>
-<div id="test-div"></div>
+<div id="test-div">在区域移动鼠标试试</div>
 	
 </div>
 </body>
