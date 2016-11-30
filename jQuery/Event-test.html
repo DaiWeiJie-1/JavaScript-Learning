@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event-Test</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//初次进入,隐藏全不选提示
+			$(".deselectAll").hide();
+			var allCmdCheckBox = $("fieldset>p:first-child").find("[type=checkbox]");
+			allCmdCheckBox.change(function(){
+				if(isAllSelect() === true){
+					allSelect();
+					
+				}else{
+					deselectAll();
+				}
+				// console.log(allCmdCheckBox.prop("checked"));
+				
+			});
+
+			// console.log($("fieldset>p:first-child").find("[type=checkbox]"));
+		});
+
+		//当用户勾上"全选"时,自动选中所有语言,并把"全选"变成"全不选"
+		function allSelect(){
+			$(".deselectAll").show();
+			$("span.selectAll").hide();
+
+			$("[type=checkbox][name=lang]").prop("checked",true);
+		}
+
+		//当用户去掉"全不选时",自动不选中所有语言
+		function deselectAll(){
+			$(".deselectAll").hide();
+			$("span.selectAll").show();
+			$("[type=checkbox][name=lang]").prop("checked",false);
+		}
+
+		function isAllSelect(){
+			return $("fieldset>p:first-child").find("[type=checkbox]").prop("checked");
+		}
+
+
+	</script>
+</head>
+<body>
+<form id="test-form" action="test">
+	<p>1.当用户勾上"全选"时,自动选中所有语言,并把"全选"变成"全不选"</p>
+	<p>2.当用户去掉"全不选时",自动不选中所有语言</p>
+
+	<legend>请选择想要学习的编程语言:</legend>
+	<fieldset>
+		<p><label class="selectAll"><input type="checkbox"><span class="selectAll">全选</span><span class="deselectAll">全不选</span></label><a href="#0" class="invertSelect">反选</a></p>
+		<p><label><input type="checkbox" name="lang" value="javascript">JavaScript</label></p>
+		<p><label><input type="checkbox" name="lang" value="python">Phthon</label></p>
+		<p><label><input type="checkbox" name="lang" value="ruby">Ruby</label></p>
+		<p><label><input type="checkbox" name="lang" value="haskell">Haskell</label></p>
+		<p><label><input type="checkbox" name="lang" value="scheme">Scheme</label></p>
+		<p><button type="submit">Submit</button></p>
+	</fieldset>
+	
+</form>
+</body>
+</html>
