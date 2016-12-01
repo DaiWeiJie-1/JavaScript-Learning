@@ -19,6 +19,11 @@
 				
 			});
 
+
+			$(".invertSelect").click(function(){
+				invertSelect();
+			});
+
 			// console.log($("fieldset>p:first-child").find("[type=checkbox]"));
 		});
 
@@ -37,6 +42,13 @@
 			$("[type=checkbox][name=lang]").prop("checked",false);
 		}
 
+		function invertSelect(){
+			$("[type=checkbox][name=lang]").each(function(){
+				var checked = $(this).prop("checked");
+				$(this).prop("checked",!checked);
+			})
+		}
+
 		function isAllSelect(){
 			return $("fieldset>p:first-child").find("[type=checkbox]").prop("checked");
 		}
@@ -48,7 +60,7 @@
 <form id="test-form" action="test">
 	<p>1.当用户勾上"全选"时,自动选中所有语言,并把"全选"变成"全不选"</p>
 	<p>2.当用户去掉"全不选时",自动不选中所有语言</p>
-
+	<p>3.当用户点"反选",自动反转语言状态</p>
 	<legend>请选择想要学习的编程语言:</legend>
 	<fieldset>
 		<p><label class="selectAll"><input type="checkbox"><span class="selectAll">全选</span><span class="deselectAll">全不选</span></label><a href="#0" class="invertSelect">反选</a></p>
