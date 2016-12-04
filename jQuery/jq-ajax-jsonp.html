@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jq-Ajax-Jsonp</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$.ajax("G:/Github/Mine/JavaScript-Learning/jQuery/jsonp.txt",{dataType:'jsonp',jsonp:'callback',jsonpCallback:'JSONP'}).done(function(data){
+				$("#test-div").append("success:" + data);
+			}).fail(function(xhr,status){
+				$("#test-div").append("fail:" + xhr.status + ";status = " + status);
+			}).always(function(){
+				$("#test-div").append("over");
+			});
+	</script>
+</head>
+<body>
+<div id="test-div"></div>
+</body>
+</html>

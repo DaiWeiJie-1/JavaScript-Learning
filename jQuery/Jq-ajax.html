@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery Ajax</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			//访问失败,因为同源策略,不能跨域,所以跨域的话可以用ajax+jsonp
+			$.ajax("www.baidu.com",{async:true}).done(function(data){
+
+			}).fail(function(xhr,status){
+				$("#test-div").append("fail:" + xhr.status + ";status = " + status);
+			}).always(function(){
+				$("#test-div").append("over");
+			});
+
+
+			
+		});
+
+	</script>
+</head>
+<body>
+<div id="test-div"></div>
+</body>
+</html>
