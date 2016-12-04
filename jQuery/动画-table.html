@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>动画</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		
+		var datas = [["jack",13,"male"],["小红",10,"female"],["小黑",22,"male"],["明明",9,"female"]];
+
+		$(document).ready(function(){
+			fillData();
+		});	
+
+		function fillData(){
+			var length = datas.length;
+
+			for(var i = 0; i < length; i++){
+				var htmlStr = "<tr><td>" + datas[i].join("</td><td>")+ "</td></tr>";
+				console.log(htmlStr);
+				$("#test-table>tbody").append($(htmlStr));
+			}
+			
+		}
+
+		function addTr(){
+			var randomNum = Math.floor((Math.random() * 4));
+			var tr = $("<tr><td>" + datas[randomNum].join("</td><td>")+ "</td></tr>");
+			tr.hide();
+			$("#test-table>tbody").append(tr);
+			tr.fadeIn(1000);
+
+		}
+
+		function removeTr(){
+			var tr = $("tbody>tr").first();
+			tr.fadeOut(1000,function(){
+				this.remove();
+			});
+		}
+	</script>
+</head>
+<body>
+<table id="test-table">
+	<thead>
+		<tr>
+		<th>Name</th>
+		<th>Age</th>
+		<th>Gender</th>
+	</tr>	
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+<button id="add" onclick="addTr()">Add</button>
+<button id="remove" onclick="removeTr()">Remove</button>
+</body>
+</html>
